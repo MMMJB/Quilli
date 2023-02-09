@@ -24,6 +24,7 @@ body {
     position: sticky;
     top: 0;
     transition: box-shadow 100ms ease-out;
+    width: max(max-content, 100vw);
 }
 
 #header.shadow {

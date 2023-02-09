@@ -57,18 +57,17 @@ button {
 }
 
 .buttongroup {
-    width: 56px;
     padding: 2px;
     border: var(--default-border);
+    display: flex;
 }
 
 .buttongroup-item {
-    display: inline-block;
-    /* padding: 0 4px; */
-    height: 14px;
-    aspect-ratio: 1;
+    height: 12px;
+    width: 12px;
+    margin: 2px;
 }
 
 .buttongroup-item.mid {
-    padding: 0 6px;
+    width: auto;
 }
