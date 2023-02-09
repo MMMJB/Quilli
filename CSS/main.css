@@ -71,7 +71,7 @@ body {
     height: 80%;
     aspect-ratio: 1;
     border-radius: 50vw;
-    /* background: url("https://picsum.photos/100/100") no-repeat center; */
+    background: url("https://picsum.photos/100/100") no-repeat center;
 }
 
 /* Toolbar */
