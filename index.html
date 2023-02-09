@@ -17,6 +17,7 @@
             </div>
             <div class="hst mid">
                 <div class="hstm titling" flex>
+                    <!-- <span id="title">Dino &lt;3 Muffin</span> -->
                     <span id="title">The Raven - Edgar Allan Poe</span>
                     <!-- Star / favorite icon -->
                 </div>
@@ -39,6 +40,14 @@
                     <li class="hsbl-toolbar-item print" role="button" icon="2"></li>
                     <li class="hsbl-toolbar-item spellcheck" role="button" icon="3"></li>
                     <li class="divider" role="separator"></li>
+                    <li class="hsbl-toolbar-item dropdown-button zoom" role="button"><span>100%</span></li>
+                    <li class="divider" role="separator"></li>
+                    <li class="hsbl-toolbar-item dropdown-button font" role="button"><span>Times New Roman</span></li>
+                    <li class="hsbl-toolbar-item buttongroup fontsize">
+                        <div class="buttongroup-item subtract" role="button" icon="18"></div>
+                        <span class="buttongroup-item mid val">12</span>
+                        <div class="buttongroup-item add" role="button" icon="19"></div>
+                    </li>
                     <li class="hsbl-toolbar-item bold" role="button" icon="4"></li>
                     <li class="hsbl-toolbar-item italic" role="button" icon="5"></li>
                     <li class="hsbl-toolbar-item underlined" role="button" icon="6"></li>
@@ -50,7 +59,7 @@
                     <li class="divider" role="separator"></li>
                     <li class="hsbl-toolbar-item lineheight" role="button" icon="11"></li>
                     <li class="divider" role="separator"></li>
-                    <li class="hsbl-toolbar-item rhyme" role="button" icon="12"></li>
+                    <li class="hsbl-toolbar-item rhyme" role="button" icon="12" disabled></li>
                     <li class="hsbl-toolbar-item define" role="button" icon="13"></li>
                     <li class="hsbl-toolbar-item syllables" role="button" icon="14"></li>
                 </ul>
@@ -62,6 +71,8 @@
             </div>
         </div>
     </header>
-    <main id="main"></main>
+    <main id="main" flex>
+        <page></page>
+    </main>
 </body>
 </html>

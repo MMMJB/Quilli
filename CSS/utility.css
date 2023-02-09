@@ -4,7 +4,7 @@ button {
     border: none;
 }
 
-*[role="button"], *[role="menuitem"], button {
+*[role="button"]:not([disabled]), *[role="menuitem"]:not([disabled]), button:not([disabled]) {
     cursor: pointer;
     user-select: none;
 }
@@ -26,7 +26,49 @@ button {
 }
 
 .header-section {
-    border-bottom: 1px solid var(--white-outline);
+    border-bottom: var(--default-border);
     padding: var(--margin-tb) var(--margin-lr);
     background-color: var(--white-m);
+}
+
+.dropdown-button {
+    margin-left: var(--toolbar-gap);
+    margin-right: calc(var(--toolbar-gap) / 2);
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-button span {
+    display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 70px;
+}
+
+.dropdown-button::after {
+    content: "";
+    display: inline-block;
+    border: 4px solid transparent;
+    border-top-color: var(--gray-icon);
+    cursor: pointer;
+    margin: 0 calc(var(--toolbar-gap) / 2);
+    translate: 0 25%;
+}
+
+.buttongroup {
+    width: 56px;
+    padding: 2px;
+    border: var(--default-border);
+}
+
+.buttongroup-item {
+    display: inline-block;
+    /* padding: 0 4px; */
+    height: 14px;
+    aspect-ratio: 1;
+}
+
+.buttongroup-item.mid {
+    padding: 0 6px;
 }
