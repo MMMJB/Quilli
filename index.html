@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quilli</title>
+
+    <script src="JS/app.js" defer></script>
+    <link href="CSS/main.css" rel="stylesheet">
+</head>
+<body>
+    <header id="header">
+        <div class="header-section top" flex>
+            <div class="hst left">
+                <img id="logo" src="/img/logo-large.png" alt="Logo" role="button">
+            </div>
+            <div class="hst mid">
+                <div class="hstm titling" flex>
+                    <span id="title">The Raven - Edgar Allan Poe</span>
+                    <!-- Star / favorite icon -->
+                </div>
+                <ul class="hstm toolbar" role="menubar">
+                    <li class="hstm-toolbar-item file" role="menuitem">File</li>
+                    <li class="hstm-toolbar-item edit" role="menuitem">Edit</li>
+                    <li class="hstm-toolbar-item design" role="menuitem">Design</li>
+                    <li class="hstm-toolbar-item tools" role="menuitem">Tools</li>
+                </ul>
+            </div>
+            <div class="hst right" flex>
+                <button id="account"></button>
+            </div>
+        </div>
+        <div class="header-section bottom">
+            <div class="hsb left">
+                <ul class="hsbl toolbar" role="toolbar">
+                    <li class="hsbl-toolbar-item undo" role="button" icon="0"></li>
+                    <li class="divider" role="separator"></li>
+                    <li class="hsbl-toolbar-item redo" role="button"></li>
+                </ul>
+            </div>
+            <div class="hsb right" flex>
+                <div class="hsbr doc-mode dropdown-button" role="button"></div>
+                <div class="divider" role="separator"></div>
+                <div class="hsbr collapse" role="button"></div>
+            </div>
+        </div>
+    </header>
+    <main id="main"></main>
+</body>
+</html>

@@ -1,0 +1,32 @@
+@import url("defaults.css");
+
+button {
+    border: none;
+}
+
+*[role="button"], *[role="menuitem"], button {
+    cursor: pointer;
+    user-select: none;
+}
+
+*[flex], .toolbar {
+    display: flex;
+}
+
+*[icon] {
+    background: url("/img/icon-spritesheet.svg") no-repeat;
+}
+
+.toolbar, .header-section {
+    gap: var(--toolbar-gap);
+}
+
+.toolbar {
+    font-size: var(--fs-small);
+}
+
+.header-section {
+    border-bottom: 1px solid var(--white-outline);
+    padding: var(--margin-tb) var(--margin-lr);
+    background-color: var(--white-m);
+}
