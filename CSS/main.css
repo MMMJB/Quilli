@@ -71,7 +71,7 @@ body {
     height: 80%;
     aspect-ratio: 1;
     border-radius: 50vw;
-    background: url("https://picsum.photos/100/100") no-repeat center;
+    /* background: url("https://picsum.photos/100/100") no-repeat center; */
 }
 
 /* Toolbar */
@@ -80,7 +80,25 @@ body {
     padding: 0px var(--margin-lr);
 }
 
+.hsbl.toolbar {
+    gap: 0;
+    align-items: center;
+}
+
 .hsbl-toolbar-item {
-    height: 28px;
+    height: var(--toolbar-item-sz);
     aspect-ratio: 1;
+    transition: background-color 100ms ease-out;
+    border-radius: 4px;
+    background-color: white;
+}
+
+.hsbl-toolbar-item:hover {
+    background-color: rgba(0, 0, 0, .05);
+}
+
+.divider {
+    width: 1px;
+    height: calc(var(--toolbar-item-sz) - 8px);
+    background-color: var(--white-outline);
 }

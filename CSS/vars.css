@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:wght@300;400&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:wght@300;400&display=swap'); */
 
 :root {
     /* Colors */
@@ -34,4 +34,8 @@
     --fs-large: 18px;
     --fs-mid: 14px;
     --fs-small: 12px;
+
+    /* Sizing */
+
+    --toolbar-item-sz: 28px;
 }

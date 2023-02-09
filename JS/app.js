@@ -7,11 +7,11 @@ document.querySelectorAll("[icon]").forEach(e => {
 
     const val = parseInt(e.getAttribute("icon"));
 
-    const x = val % 7 * scalar;
-    const y = Math.floor(val / 7) * scalar;
+    const x = val % 7;
+    const y = Math.floor(val / 7);
 
-    const xs = `-${x * box + x + scalar}px`;
-    const ys = `-${y * box + y + scalar}px`;
+    const xs = `-${x * box + x * scalar + scalar}px`;
+    const ys = `-${y * box + y * scalar + scalar}px`;
 
     e.style.setProperty("background-size", `${bw * scalar}px ${bh * scalar}px`);
     e.style.setProperty("background-position", `${xs} ${ys}`);
