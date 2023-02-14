@@ -14,8 +14,9 @@ body {
     min-height: 100vh;
     font-family: var(--roboto);
     background: url("/img/background.png") var(--white-bg) repeat center;
+    /* background-attachment: fixed; */
     background-blend-mode: overlay;
-    background-size: 30%;
+    background-size: 25%;
 }
 
 /* Menubar */
@@ -24,7 +25,6 @@ body {
     position: sticky;
     top: 0;
     transition: box-shadow 100ms ease-out;
-    width: max(max-content, 100vw);
 }
 
 #header.shadow {
@@ -130,4 +130,9 @@ page {
     background-color: var(--white-m);
     border-radius: 4px;
     box-shadow: var(--default-shadow);
+    padding: 48px
+}
+
+page:focus-visible {
+    outline: none;
 }

@@ -1,3 +1,5 @@
+import "./doc";
+
 document.querySelectorAll("[icon]").forEach(e => {
     const disabled = e.getAttributeNames().includes("disabled");
     
