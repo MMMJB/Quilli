@@ -2,7 +2,7 @@ document.querySelectorAll("[icon]").forEach(e => {
     const disabled = e.getAttributeNames().includes("disabled");
     
     const s = e.getBoundingClientRect().height; // Assuming square
-    const ps = 32, bw = 232, bh = 199;
+    const ps = 32, bw = 225, bh = 129;
 
     const scalar = s / ps;
     const box = scalar * ps;
