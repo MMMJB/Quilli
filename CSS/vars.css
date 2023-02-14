@@ -3,8 +3,8 @@
 :root {
     /* Colors */
 
-    --white-m: #FFFFFF;
-    --white-bg: #F0F0F0;
+    --white-page: #FFFFFD;
+    --white-bg: #F7F7F7;
     --white-outline: #DADCE0;
 
     --gray-disabled: #AFB1B2;
@@ -17,6 +17,7 @@
     /* Spacing */
 
     --toolbar-gap: 12px;
+    --toolbar-item-gap: 20px;
 
     --margin-tb: 11px;
     --margin-lr: 16px;
