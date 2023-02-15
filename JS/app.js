@@ -1,27 +1,30 @@
 import "./doc";
 
+const SW = 7, SH = 4;
+
 document.querySelectorAll("[icon]").forEach(e => {
     const disabled = e.getAttributeNames().includes("disabled");
     
-    const s = e.getBoundingClientRect().height; // Assuming square
-    const ps = 32, bw = 225, bh = 129;
+    const s = parseInt(e.getAttribute("icon-size"));  // Assuming square
+    const ps = 32, bw = 232, bh = 133;
 
     const scalar = s / ps;
-    const box = scalar * ps;
 
     const val = parseInt(e.getAttribute("icon"));
 
-    const x = val % 7;
-    const y = Math.floor(val / 7) + (disabled ? 3 : 0);
+    const x = val % SW;
+    const y = Math.floor(val / SW)// + (disabled ? 3 : 0);
 
-    const xs = `-${x * box + x * scalar + scalar}px`;
-    const ys = `-${y * box + y * scalar + scalar}px`;
+    const mx = x * s + (x + 1) * scalar;
+    const my = y * s + (y + 1) * scalar;
 
-    e.style.setProperty("background-size", `${bw * scalar}px ${bh * scalar}px`);
-    e.style.setProperty("background-position", `${xs} ${ys}`);
+    e.style.setProperty("background-size", `${bw * scalar}px ${bh * scalar + scalar * 1.999}px`);
+    e.style.setProperty("background-position", `-${mx}px -${my * 1.003}px`);
+
+    if (getComputedStyle(e).height !== s) e.style.setProperty("height", `${s}px`);
 })
 
-window.onscroll = e => {
+window.onscroll = _ => {
     const page = document.querySelector("page"), header = document.querySelector("header");
 
     const my = page.getBoundingClientRect().y - header.getBoundingClientRect().bottom + window.scrollY;

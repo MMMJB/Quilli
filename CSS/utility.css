@@ -1,19 +1,74 @@
-@import url("defaults.css");
-
 button {
     border: none;
 }
 
-*[role="button"]:not([disabled]), *[role="menuitem"]:not([disabled]), button:not([disabled]) {
+[role="button"]:not([disabled]), [role="menuitem"]:not([disabled]), button:not([disabled]) {
     cursor: pointer;
     user-select: none;
 }
 
-*[flex] {
+[flex] {
     display: flex;
 }
 
-*[icon] {
+[icon] {
     background: url("/img/icon-spritesheet.svg") no-repeat;
     aspect-ratio: 1;
+}
+
+i[icon] {
+    display: block;
+}
+
+/* [icon]::after {
+    content: '';
+    position: absolute;
+    height: inherit;
+    aspect-ratio: 1;
+    backdrop-filter: invert(1);
+}
+
+[icon]::before {
+    content: '';
+    position: absolute;
+    background: inherit;
+    width: 100px;
+    height: 100px;
+} */
+
+/* Defaults */
+
+::-webkit-scrollbar {
+    height: 12px;
+    overflow: visible;
+    width: 12px;
+}
+
+::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+}
+
+::-webkit-scrollbar-corner {
+    background: rgba(0, 0, 0, .05);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, .1);
+    border-radius: 50vw;
+    background-clip: padding-box;
+    padding: 2px;
+    border: 2px solid transparent;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, .2);
+}
+
+::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, .05);
+}
+
+::selection {
+    background-color: rgba(67, 206, 162, .5)
 }

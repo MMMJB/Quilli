@@ -34,13 +34,13 @@ body {
 .header-section {
     border-bottom: var(--default-border);
     padding: var(--margin-tb) var(--margin-lr);
-    background-color: #fff;
+    background-color: #FFF;
     justify-content: center;
 }
 
 .titling {
     align-items: center;
-    gap: var(--toolbar-gap);
+    gap: var(--default-gap);
 }
 
 #title {
@@ -71,31 +71,6 @@ body {
     padding: 4px 0;
 }
 
-.hstm-toolbar-item {
-    font-weight: var(--lgt);
-    font-size: var(--fs-mid);
-    margin-top: 6px;
-    position: relative;
-}
-
-.hstm-toolbar-item::before {
-    content: '';
-    position: absolute;
-    translate: -50% -50%;
-    top: 50%;
-    left: 50%;
-    width: calc(100% + var(--toolbar-gap));
-    height: calc(100% + 6px);
-    background-color: rgba(0, 0, 0, .05);
-    border-radius: 4px;
-    opacity: 0;
-    transition: opacity 100ms ease-out;
-}
-
-.hstm-toolbar-item:hover::before {
-    opacity: 1;
-}
-
 .hst.right {
     flex-grow: 1;
     justify-content: end;
@@ -109,48 +84,35 @@ body {
     background: url("https://picsum.photos/100/100") no-repeat center;
 }
 
-/* Toolbar */
-
-.header-section.bottom {
-    padding: 0px var(--margin-lr);
-}
-
-.hsbl.toolbar {
-    gap: 0;
-    align-items: center;
-}
-
-.hsbl-toolbar-item {
-    transition: background-color 100ms ease-out;
-    border-radius: 4px;
-    background-color: white;
-}
-
-.hsbl-toolbar-item[icon] {
-    height: var(--toolbar-item-sz);
-    aspect-ratio: 1;
-}
-
-.hsbl-toolbar-item[icon]:hover:not([disabled]) {
-    background-color: rgba(0, 0, 0, .05);
-}
-
-.divider {
-    width: 1px;
-    height: calc(var(--toolbar-item-sz) - 8px);
-    background-color: var(--white-outline);
-}
-
 /* Main */
 
 #main {
     justify-content: center;
-    padding: var(--toolbar-gap) 0;
+    padding: var(--default-gap) 0;
 }
+
+/* Toolbar */
+
+#toolbar {
+    position: fixed;
+    left: calc((100vw - 816px - 12px) / 2 - 36px);
+    transform: translateX(-100%);
+}
+
+.ti-cover {
+    padding: 16px;
+    background-color: #FFF;
+    border-radius: 50vw;
+    box-shadow: var(--small-shadow);
+    position: relative;
+    margin-bottom: var(--toolbar-cover-gap);
+}
+
+/* Page */
 
 page {
     width: 816px;
-    height: 1056px;
+    min-height: 1056px;
     background-color: var(--white-page);
     border-radius: 4px;
     box-shadow: var(--default-shadow);
