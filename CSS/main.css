@@ -94,9 +94,14 @@ body {
 /* Toolbar */
 
 #toolbar {
-    position: fixed;
-    left: calc((100vw - 816px - 12px) / 2 - 36px);
-    transform: translateX(-100%);
+    position: sticky;
+    /* left: calc((100vw - 816px - 12px) / 2 - 36px); */
+    margin-right:  36px;
+    top: 20px;
+}
+
+.toolbar-item {
+    position: relative;
 }
 
 .ti-cover {
@@ -105,7 +110,53 @@ body {
     border-radius: 50vw;
     box-shadow: var(--small-shadow);
     position: relative;
-    margin-bottom: var(--toolbar-cover-gap);
+    margin: var(--toolbar-cover-gap) 0;
+    transition: scale 100ms ease-out;
+}
+
+.ti-cover:hover {
+    scale: 1.1;
+}
+
+.ti-popout {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    right: 50%;
+    top: 50%;
+    gap: var(--toolbar-item-gap);
+    transform: translateY(-50%);
+    background-color: #FCFCFC;
+    border-radius: 50vw 0 0 50vw;
+    padding: var(--toolbar-pop-pad-x) var(--toolbar-pop-pad-y);
+    box-shadow: var(--small-shadow);
+    z-index: -1;
+    overflow: hidden;
+}
+
+.ti-popout-item {
+    position: relative;
+}
+
+.ti-popout-item:hover::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    translate: -50% -50%;
+    width: calc(2 * var(--toolbar-pop-pad-x) + 100%);
+    height: calc(2 * var(--toolbar-pop-pad-y) + 100%);
+    background-color: red;
+    z-index: -1;
+}
+
+.ti-popout-item:last-of-type {
+    margin-right: calc(var(--default-gap) * 2);
+}
+
+.divider {
+    height: 24px;
+    border-right: 1px solid var(--white-outline);
+    margin: 0 calc(var(--default-gap) - var(--toolbar-item-gap));
 }
 
 /* Page */
@@ -121,4 +172,8 @@ page {
 
 page:focus-visible {
     outline: none;
+}
+
+page *::spelling-error {
+    text-decoration: dotted black;
 }

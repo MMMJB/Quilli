@@ -7,7 +7,13 @@ const editor = new Squire(document.querySelector("page"), {
 }).focus();
 
 editor.addEventListener("pathChange", _ => {
-    if (editor.hasFormat("B")) console.log("Bold");
-    else if (editor.hasFormat("I")) console.log("italic");
-    else if (editor.hasFormat("U")) console.log("underlined");
+    const bold = editor.hasFormat("B"),
+          italic = editor.hasFormat("I"),
+          underlined = editor.hasFormat("U");
+    
+    if (bold) console.log("bold");
+    if (italic) console.log("italic");
+    if (underlined) console.log("underlined");
+    
+    if (!bold && !italic && !underlined) console.log("clear")
 })
