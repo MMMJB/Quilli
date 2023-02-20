@@ -150,6 +150,7 @@ body {
 
 .toolbar-item {
     position: relative;
+    direction: rtl;
 }
 
 .ti-cover {
@@ -163,39 +164,40 @@ body {
     transition: scale 100ms ease-out;
 }
 
-.ti-cover.active, .ti-cover:hover, .ti-cover:has(+ .ti-popout:hover) {
+.ti-cover.active, .ti-cover:hover, .ti-cover:has(+ .ti-popout-wrapper > .ti-popout:hover) {
     scale: 1.1;
 }
 
-.ti-popout {
+.ti-popout-wrapper {
     position: absolute;
+    height: 101%;
     display: flex;
+    align-items: center;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: -1;
+    margin-right: var(--toolbar-pop-pad-x);
+    overflow: hidden;
+}
+
+.ti-popout {
+    display: flex;
+    flex-direction: row-reverse;
     align-items: center;
     min-width: 220px;
     right: var(--toolbar-pop-pad-x);
-    top: 50%;
     gap: var(--toolbar-item-gap);
-    transform: translateY(-50%);
     background-color: #FCFCFC;
     border-radius: 50vw 0 0 50vw;
     padding: var(--toolbar-pop-pad-y) var(--toolbar-pop-pad-x);
-    padding-right: calc(var(--toolbar-pop-pad-x) + var(--default-gap));
     box-shadow: var(--small-shadow);
     z-index: -1;
     transition: all 350ms ease;
-
-    mask: linear-gradient(black, black) no-repeat;
-    -webkit-mask: linear-gradient(black, black) no-repeat;
-    mask-size: 100%;
-    -webkit-mask-size: 100%;
 }
 
-.ti-cover:not(.active):not(:hover) + .ti-popout:not(:hover) {
+.ti-cover:not(.active):not(:hover) + .ti-popout-wrapper > .ti-popout:not(:hover) {
     translate: 100%;
     pointer-events: none;
-
-    mask-size: 0%;
-    -webkit-mask-size: 0%;
 }
 
 .ti-popout-item {
@@ -205,7 +207,7 @@ body {
 .ti-popout-item:hover::before {
     content: '';
     position: absolute;
-    translate: -25% -25%;
+    translate: 75% -25%;
     width: calc(2 * var(--toolbar-pop-pad-y) + 100%);
     aspect-ratio: 1;
     background-color: rgba(0, 0, 0, .03);
