@@ -1,6 +1,12 @@
 import "./doc";
 
 const SW = 7, SH = 4;
+const toolbar = document.getElementById("toolbar");
+
+const updateTBPos = _ => toolbar.style.setProperty("top", `${toolbar.getBoundingClientRect().top}px`);
+
+updateTBPos();
+window.onresize = updateTBPos;
 
 document.querySelectorAll("[icon]").forEach(e => {
     const disabled = e.getAttributeNames().includes("disabled");
