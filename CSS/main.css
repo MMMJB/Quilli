@@ -10,7 +10,6 @@
 }
 
 body {
-    min-width: 100vw;
     min-height: 100vh;
     font-family: var(--roboto);
     background: url("/img/background.png") var(--white-bg) repeat center;
@@ -104,6 +103,43 @@ body {
     padding: var(--default-gap) 0;
 }
 
+#quilli-checker {
+    position: fixed;
+    background: linear-gradient(-45deg, var(--accent-dark), var(--accent-light));
+    right: var(--margin-lr);
+    bottom: var(--margin-lr);
+    width: var(--qb-sz);
+    height: var(--qb-sz);
+    border-radius: 50%;
+    box-shadow: var(--small-shadow);
+}
+
+#quilli-checker::after {
+    content: '';
+    position: absolute;
+    width: 60%;
+    height: 60%;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    background: url("/img/logo-fill.svg") no-repeat center;
+    background-size: contain;
+}
+
+#alert {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    width: 20px;
+    height: 20px;
+    padding: 4px;
+    translate: -15% -15%;
+    background-color: #FFCC00;
+    font-size: var(--fs-small);
+    border-radius: 50%;
+    box-shadow: var(--small-shadow);
+}
+
 /* Toolbar */
 
 #toolbar {
@@ -127,8 +163,8 @@ body {
     transition: scale 100ms ease-out;
 }
 
-.ti-cover.active, .ti-cover:hover {
-    /* scale: 1.1; */
+.ti-cover.active, .ti-cover:hover, .ti-cover:has(+ .ti-popout:hover) {
+    scale: 1.1;
 }
 
 .ti-popout {
@@ -146,13 +182,20 @@ body {
     padding-right: calc(var(--toolbar-pop-pad-x) + var(--default-gap));
     box-shadow: var(--small-shadow);
     z-index: -1;
-    overflow: hidden;
-    transition: translate 350ms ease;
+    transition: all 350ms ease;
+
+    mask: linear-gradient(black, black) no-repeat;
+    -webkit-mask: linear-gradient(black, black) no-repeat;
+    mask-size: 100%;
+    -webkit-mask-size: 100%;
 }
 
 .ti-cover:not(.active):not(:hover) + .ti-popout:not(:hover) {
     translate: 100%;
     pointer-events: none;
+
+    mask-size: 0%;
+    -webkit-mask-size: 0%;
 }
 
 .ti-popout-item {

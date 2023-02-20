@@ -45,6 +45,8 @@
 
     --ti-sz: 16px;
 
+    --qb-sz: 3.5em;
+
     /* Styling */
 
     --default-border: 1px solid var(--white-outline);
