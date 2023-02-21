@@ -1,4 +1,11 @@
 import Squire from "squire-rte";
+import Coloris from "@melloware/coloris";
+
+
+Coloris.setInstance(".color-picker", {
+    
+})
+
 
 const editor = new Squire(document.querySelector("page"), {
     blockAttributes: {
@@ -22,6 +29,11 @@ editor.addEventListener("pathChange", _ => {
 
     if (underline) activate("underline");
     else deactivate("underline");
+
+    const fs = parseInt(editor.getFontInfo().size);
+    if (fs !== fontSize) changeFontSize(fs);
+
+    console.log(editor.hasFormat("align-right"));
 })
 
 
@@ -54,4 +66,18 @@ bind("algn.right", _ => editor.setTextAlignment("right"));
 bind("algn.justify", _ => editor.setTextAlignment("justify"));
 
 
-document.querySelector(".fontSize-input").onblur = e => editor.setFontSize(`${e.target.value}px`);
+var fontSize = 14;
+
+const changeFontSize = newVal => {
+    fontSize = parseInt(newVal);
+    editor.setFontSize(`${newVal}px`);
+
+    document.querySelector(".fontSize-input").value = newVal;
+}
+
+document.querySelector(".arrow.up").onclick = _ => changeFontSize(fontSize + 1);
+document.querySelector(".arrow.down").onclick = _ => changeFontSize(fontSize - 1);
+document.querySelector(".fontSize-input").onblur = e => changeFontSize(e.target.value);
+document.querySelector(".fontSize-input").onkeyup = e => {
+    if (e.key == "Enter" || e.keyCode == 13) changeFontSize(e.target.value);
+}
