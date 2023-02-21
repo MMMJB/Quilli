@@ -1,19 +1,12 @@
 @import url("./vars.css"); 
 @import url("./utility.css");
 
-*, *::before, *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    list-style: none;
-    appearance: none;
-}
-
 body {
     min-height: 100vh;
     font-family: var(--roboto);
-    background: url("/img/background.png") var(--white-bg) repeat center;
+    /* background: url("/img/background.png") repeat center; */
     /* background-attachment: fixed; */
+    background-color: var(--white-bg);
     background-blend-mode: overlay;
     background-size: 25%;
 }
@@ -111,7 +104,7 @@ body {
     width: var(--qb-sz);
     height: var(--qb-sz);
     border-radius: 50%;
-    box-shadow: var(--small-shadow);
+    box-shadow: var(--default-shadow);
 }
 
 #quilli-checker::after {
@@ -137,7 +130,7 @@ body {
     background-color: #FFCC00;
     font-size: var(--fs-small);
     border-radius: 50%;
-    box-shadow: var(--small-shadow);
+    box-shadow: var(--default-shadow);
 }
 
 /* Toolbar */
@@ -185,7 +178,6 @@ body {
     flex-direction: row-reverse;
     align-items: center;
     min-width: 220px;
-    right: var(--toolbar-pop-pad-x);
     gap: var(--toolbar-item-gap);
     background-color: #FCFCFC;
     border-radius: 50vw 0 0 50vw;
@@ -204,7 +196,7 @@ body {
     position: relative;
 }
 
-.ti-popout-item:hover::before {
+.ti-popout-item:not(.custom):hover::before, .ti-popout-item.active::before {
     content: '';
     position: absolute;
     translate: 75% -25%;
@@ -215,10 +207,67 @@ body {
     border-radius: 2px;
 }
 
+.ti-popout-item.active::before {
+    background-color: unset !important;
+    opacity: .25;
+    border-radius: 8px !important;
+    border: 1px solid var(--accent-light);
+}
+
+.ti-popout-item.active > i {
+    filter: sepia(1) hue-rotate(120deg);
+}
+
 .divider {
     height: 24px;
     border-right: 1px solid var(--white-outline);
     margin: 0 calc(var(--default-gap) - var(--toolbar-item-gap));
+}
+
+.input-num {
+    border: var(--default-border);
+    width: 20px;
+    height: 20px;
+    direction: ltr;
+    border-radius: 2px;
+    color: var(--gray-icon);
+    text-align: center;
+    font-family: var(--roboto);
+    font-size: var(--fs-small);
+}
+
+.input-num:focus-visible {
+    outline: 1px solid var(--accent-light);
+}
+
+.arrow {
+    position: absolute;
+    left: 50%;
+    translate: -50%;
+}
+
+.arrow.up {
+    translate: -50% -100%;
+}
+
+.dropdown-head {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    border-radius: 2px;
+    border: var(--default-border);
+    display: grid;
+    place-items: center;
+}
+
+.dropdown-head::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    translate: -50% 100%;
+    border: 4px solid transparent;
+    border-top: 4px solid var(--white-outline);
 }
 
 /* Page */

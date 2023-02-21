@@ -1,3 +1,11 @@
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    appearance: none;
+}
+
 button {
     border: none;
 }
@@ -19,22 +27,6 @@ button {
 i[icon] {
     display: block;
 }
-
-/* [icon]::after {
-    content: '';
-    position: absolute;
-    height: inherit;
-    aspect-ratio: 1;
-    backdrop-filter: invert(1);
-}
-
-[icon]::before {
-    content: '';
-    position: absolute;
-    background: inherit;
-    width: 100px;
-    height: 100px;
-} */
 
 /* Defaults */
 
@@ -71,4 +63,13 @@ i[icon] {
 
 ::selection {
     background-color: rgba(67, 206, 162, .5)
+}
+
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
 }
