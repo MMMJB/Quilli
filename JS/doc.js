@@ -1,11 +1,4 @@
 import Squire from "squire-rte";
-import Coloris from "@melloware/coloris";
-
-
-Coloris.setInstance(".color-picker", {
-    
-})
-
 
 const editor = new Squire(document.querySelector("page"), {
     blockAttributes: {

@@ -167,10 +167,10 @@ body {
     display: flex;
     align-items: center;
     top: 50%;
-    transform: translateY(-50%);
+    translate: 0 -50%;
     z-index: -1;
     margin-right: var(--toolbar-pop-pad-x);
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 .ti-popout {
@@ -268,6 +268,66 @@ body {
     translate: -50% 100%;
     border: 4px solid transparent;
     border-top: 4px solid var(--white-outline);
+}
+
+.input-color:hover > color-select {
+    display: flex !important;
+}
+
+.ti-popout-wrapper:has(.input-color:hover) {
+    height: 150px;
+}
+
+color-select {
+    position: absolute;
+    left: 0;
+    flex-direction: column;
+    gap: 3px;
+    align-items: center;
+    background-color: #FFF;
+    border-radius: 8px;
+    padding: 9px;
+    box-shadow: var(--default-shadow);
+    display: none;
+    cursor: auto;
+    z-index: 999;
+}
+
+.cs-row {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 3px;
+}
+
+.cs-col {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    box-shadow: 0 0 1px inset rgba(0, 0, 0, .25);
+}
+
+.cs-col[value="new"] {
+    box-shadow: none;
+    border: 1px dashed var(--white-outline);
+}
+
+.cs-col[value="new"]::after {
+    content: '+';
+    color: var(--gray-icon);
+    font-size: 14px;
+    position: absolute;
+    translate: calc(100% + 3px) -12.5%;
+    z-index: 0;
+}
+
+.cs-col[value="new"] > input {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    translate: 0 -25%;
+    cursor: pointer;
+    z-index: 1;
 }
 
 /* Page */
