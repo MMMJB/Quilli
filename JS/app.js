@@ -1,5 +1,3 @@
-import "./doc";
-
 const SW = 7, SH = 4;
 const toolbar = document.getElementById("toolbar");
 

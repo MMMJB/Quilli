@@ -157,7 +157,7 @@ body {
     transition: scale 100ms ease-out;
 }
 
-.ti-cover.active, .ti-cover:hover, .ti-cover:has(+ .ti-popout-wrapper > .ti-popout:hover) {
+.ti-cover.active, .ti-cover:hover, .ti-cover:has(+ .ti-popout-wrapper *:hover) {
     scale: 1.1;
 }
 
@@ -334,6 +334,7 @@ color-select {
 
 page {
     min-width: 816px;
+    max-width: 816px;
     min-height: 1056px;
     background-color: var(--white-page);
     border-radius: 4px;
