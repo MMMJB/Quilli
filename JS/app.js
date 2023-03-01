@@ -1,3 +1,6 @@
+import colors from "./Util/colors";
+import fonts from "./Util/fonts";
+
 const SW = 7, SH = 4;
 const toolbar = document.getElementById("toolbar");
 
@@ -6,9 +9,13 @@ const updateTBPos = _ => toolbar.style.setProperty("top", `${toolbar.getBounding
 updateTBPos();
 window.onresize = updateTBPos;
 
+window.onload = _ => {
+    fonts.forEach(f => {
+        console.log(f);
+    })
+}
+
 document.querySelectorAll("[icon]").forEach(e => {
-    const disabled = e.getAttributeNames().includes("disabled");
-    
     const s = parseInt(e.getAttribute("icon-size"));  // Assuming square
     const ps = 32, bw = 232, bh = 133;
 
@@ -17,7 +24,7 @@ document.querySelectorAll("[icon]").forEach(e => {
     const val = parseInt(e.getAttribute("icon"));
 
     const x = val % SW;
-    const y = Math.floor(val / SW)// + (disabled ? 3 : 0);
+    const y = Math.floor(val / SW);
 
     const mx = x * s + (x + 1) * scalar;
     const my = y * s + (y + 1) * scalar;
@@ -29,27 +36,6 @@ document.querySelectorAll("[icon]").forEach(e => {
 })
 
 document.querySelectorAll("color-select").forEach(e => {
-    const colors = [
-        [
-            "#FF0000",
-            "#FFA500",
-            "#FFFF00",
-            "#00FF00",
-            "#00FFFF",
-            "#0000FF",
-            "#7000B5",
-            "#FF00FF"
-        ],
-        [
-            "#FFFFFF",
-            "#EAEAEA",
-            "#C0C0C0",
-            "#808080",
-            "#3B3B3B",
-            "#000000"
-        ]
-    ]
-
     colors.forEach((r, i) => {
         e.innerHTML += `<ul class='cs-row r${i}'></ul>`;
         const container = e.querySelector(`.cs-row.r${i}`);

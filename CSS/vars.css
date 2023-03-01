@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:wght@300;400&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:wght@300;400&display=swap'); */
 
 :root {
     /* Colors */
@@ -27,10 +27,31 @@
     --margin-tb: 11px;
     --margin-lr: 16px;
 
-    /* Typography */
+    /* Fonts */
 
+    --amatic-sc: 'Amatic SC', cursive;
+    --caveat: 'Caveat', cursive;
+    --comfortaa: 'Comfortaa', cursive;
+    --happy-monkey: 'Happy Monkey', cursive;
+    --lobster: 'Lobster', cursive;
+
+    --courier-prime: 'Courier Prime', monospace;
+    --dm-mono: 'DM Mono', monospace;
+    --roboto-mono: 'Roboto Mono', monospace;
+
+    --eb-garamond: 'EB Garamond', serif;
+    --gilda-display: 'Gilda Display', serif;
+    --merriweather: 'Merriweather', serif;
+    --playfair-display: 'Playfair Display', serif;
+
+    --inter: 'Inter', sans-serif;
+    --montserrat: 'Montserrat', sans-serif;
     --open-sans: 'Open Sans', sans-serif;
+    --poppins: 'Poppins', sans-serif;
+    --quicksand: 'Quicksand', sans-serif;
     --roboto: 'Roboto', sans-serif;
+
+    /* Typography */
 
     --lgt: 300;
     --reg: 400;

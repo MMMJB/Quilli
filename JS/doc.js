@@ -7,7 +7,7 @@ const editor = new Squire(document.querySelector("page"), {
     }
 }).focus();
 
-editor.addEventListener("pathChange", _ => {
+editor.addEventListener("pathChange", e => {
     const bold = editor.hasFormat("B"),
           italic = editor.hasFormat("I"),
           underline = editor.hasFormat("U");
@@ -25,8 +25,23 @@ editor.addEventListener("pathChange", _ => {
     else deactivate("underline");
 
     const fs = parseInt(editor.getFontInfo().size);
-    if (fs !== fontSize) changeFontSize(fs);
+    const tfs = parseInt(document.querySelector(".fontSize-input").value);
+    if (fs !== tfs) setFontSize(fs);
 })
+
+
+const selectAll = _ => {
+    const range = new Range();
+    const page = document.querySelector("page");
+
+    const start = page.querySelector("div");
+    const end = page.querySelector("div:last-of-type");
+
+    range.setStartBefore(start);
+    range.setEndAfter(end);
+
+    editor.setSelection(range);
+}
 
 
 const bind = (elm, func1, func2) => {
@@ -61,18 +76,27 @@ bind(".textColor .cs-col", e => editor.setTextColour(e.getAttribute("value")));
 bind(".highlight .cs-col", e => editor.setHighlightColour(e.getAttribute("value")));
 
 
-var fontSize = 14;
-
-const changeFontSize = newVal => {
-    fontSize = parseInt(newVal);
+const setFontSize = newVal => {
     editor.setFontSize(`${newVal}px`);
-
     document.querySelector(".fontSize-input").value = newVal;
+}, getFontSize = _ => {
+    return parseInt(editor.getFontInfo().size);
 }
 
-document.querySelector(".arrow.up").onclick = _ => changeFontSize(fontSize + 1);
-document.querySelector(".arrow.down").onclick = _ => changeFontSize(fontSize - 1);
-document.querySelector(".fontSize-input").onblur = e => changeFontSize(e.target.value);
+document.querySelector(".arrow.up").onclick = _ => setFontSize(getFontSize() + 1);
+document.querySelector(".arrow.down").onclick = _ => setFontSize(getFontSize() - 1);
+document.querySelector(".fontSize-input").onblur = e => setFontSize(e.target.value);
 document.querySelector(".fontSize-input").onkeyup = e => {
-    if (e.key == "Enter" || e.keyCode == 13) changeFontSize(e.target.value);
+    if (e.key == "Enter" || e.keyCode == 13) setFontSize(e.target.value);
 }
+
+
+const setLineHeight = newVal => {
+    selectAll();
+
+    editor.forEachBlock(e => {
+        e.style.setProperty("margin-bottom", `${newVal || 0}px`);
+    }, true);
+}
+
+document.querySelector(".lineHeight").onclick = _ => setLineHeight();

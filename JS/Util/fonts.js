@@ -1,0 +1,21 @@
+export default [
+    "Amatic SC",
+    "Caveat",
+    "Comfortaa",
+    "Courier Prime",
+    "DM Mono",
+    "EB Garamond",
+    "Gilda Display",
+    "Happy Monkey",
+    "Inter",
+    "Lobster",
+    "Merriweather",
+    "Montserrat",
+    "Open Sans",
+    "Oswald",
+    "Playfair Display",
+    "Poppins",
+    "Quicksand",
+    "Roboto Mono",
+    "Roboto"
+]
