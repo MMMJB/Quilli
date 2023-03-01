@@ -1,19 +1,13 @@
 import colors from "./Util/colors";
-import fonts from "./Util/fonts";
 
 const SW = 7, SH = 4;
 const toolbar = document.getElementById("toolbar");
 
 const updateTBPos = _ => toolbar.style.setProperty("top", `${toolbar.getBoundingClientRect().top}px`);
 
+window.scrollTo({top: 0});
 updateTBPos();
 window.onresize = updateTBPos;
-
-window.onload = _ => {
-    fonts.forEach(f => {
-        console.log(f);
-    })
-}
 
 document.querySelectorAll("[icon]").forEach(e => {
     const s = parseInt(e.getAttribute("icon-size"));  // Assuming square

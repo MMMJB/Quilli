@@ -1,4 +1,6 @@
 import "./app";
+
+import fonts from "./Util/fonts";
 import Squire from "squire-rte";
 
 const editor = new Squire(document.querySelector("page"), {
@@ -7,7 +9,7 @@ const editor = new Squire(document.querySelector("page"), {
     }
 }).focus();
 
-editor.addEventListener("pathChange", e => {
+editor.addEventListener("pathChange", _ => {
     const bold = editor.hasFormat("B"),
           italic = editor.hasFormat("I"),
           underline = editor.hasFormat("U");
@@ -27,6 +29,15 @@ editor.addEventListener("pathChange", e => {
     const fs = parseInt(editor.getFontInfo().size);
     const tfs = parseInt(document.querySelector(".fontSize-input").value);
     if (fs !== tfs) setFontSize(fs);
+
+    const family = editor.getFontInfo().family?.split(",")[0].replaceAll('"', "") || "Roboto";
+    const tfamily = document.querySelector(".font .dropdown-item[active]").innerText;
+    if (family !== tfamily) {
+        editor.setFontFace(family);
+
+        document.querySelector(".font .dropdown-item[active]").removeAttribute("active");
+        document.querySelector(`.font .dropdown-item[value="${family}"]`).setAttribute("active", "");
+    }
 })
 
 
@@ -91,12 +102,34 @@ document.querySelector(".fontSize-input").onkeyup = e => {
 }
 
 
-const setLineHeight = newVal => {
-    selectAll();
+window.onload = _ => {
+    const fontsList = document.querySelector(".font .dropdown-body");
+    
+    fonts.forEach(f => {
+        const fVar = f.toLowerCase().replaceAll(" ", "-");
 
-    editor.forEachBlock(e => {
-        e.style.setProperty("margin-bottom", `${newVal || 0}px`);
-    }, true);
+        fontsList.innerHTML += `<li ${f == "Roboto" ? "active" : ""} value='${f}' class='dropdown-item' role='button' style='font-family:var(--${fVar})'>${f}</li>`;
+    })
+
+    const fontsListItems = fontsList.querySelectorAll(".dropdown-item");
+
+    fontsListItems.forEach(e => {
+        e.onclick = _ => {
+            fontsListItems.forEach(e => e.removeAttribute("active"));
+
+            e.setAttribute("active", "");
+            editor.setFontFace(e.innerText);
+        }
+    })
 }
 
-document.querySelector(".lineHeight").onclick = _ => setLineHeight();
+
+// const setLineHeight = newVal => {
+//     selectAll();
+
+//     editor.forEachBlock(e => {
+//         e.style.setProperty("margin-bottom", `${newVal || 0}px`);
+//     }, true);
+// }
+
+// document.querySelector(".lineHeight").onclick = _ => setLineHeight();
