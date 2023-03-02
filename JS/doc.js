@@ -19,9 +19,37 @@ page.addEventListener("DOMNodeInserted", e => {
     e.target.setAttribute("style", pStyle);
 })
 
+page.addEventListener("keydown", e => {
+    if (e.key == "Tab") {
+        e.preventDefault();
+
+        const block = getCurrentBlock();
+        const align = block.style.getPropertyValue("text-align") || "left";
+    
+        if (align !== "right") {
+            const indent = parseInt(block.style.getPropertyValue("padding-left")) || 0;
+            block.style.setProperty("padding-left", `${indent + 45}px`);
+        } else {
+            const indent = parseInt(block.style.getPropertyValue("padding-right")) || 0;
+            block.style.setProperty("padding-right", `${indent + 45}px`);
+        }
+    } else if (e.key == "Backspace") {
+        
+    }
+})
+
 const cssEditable = document.styleSheets[0];
 const editorStyle = cssEditable.cssRules[0] || cssEditable.rules[0];
 const editEditorStyle = (rule, value) => editorStyle.style.setProperty(rule, value, "important");
+
+const getCurrentBlock = _ => {
+    let block = window.getSelection().focusNode;
+    
+    while (block.nodeType !== 1 || !block.classList.contains("squire-block")) 
+        block = block.parentNode;
+
+    return block;
+}
 
 editor.addEventListener("pathChange", _ => {
     const bold = editor.hasFormat("B"),
@@ -53,9 +81,7 @@ editor.addEventListener("pathChange", _ => {
         document.querySelector(`.font .dropdown-item[value="${family}"]`).setAttribute("active", "");
     }
 
-    let block = window.getSelection().focusNode;
-    while (block.nodeType !== 1 || !block.classList.contains("squire-block")) 
-        block = block.parentNode;
+    const block = getCurrentBlock();
     
     const align = block.style.getPropertyValue("text-align") || "left";
     const talign = document.querySelector(".algn.active").getAttribute("value");
@@ -113,7 +139,7 @@ document.querySelector(".fontSize-input").onkeyup = e => {
 }
 
 
-window.onload = _ => {
+window.addEventListener("load", _ => {
     const fontsList = document.querySelector(".font .dropdown-body");
     
     fonts.forEach(f => {
@@ -132,4 +158,4 @@ window.onload = _ => {
             editor.setFontFace(e.innerText);
         }
     })
-}
+});

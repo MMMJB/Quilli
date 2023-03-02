@@ -52,3 +52,5 @@ window.onscroll = _ => {
     if (window.scrollY > my) header.classList.add("shadow");
     else header.classList.remove("shadow");
 }
+
+window.addEventListener("load", _ => document.querySelector("loader").removeAttribute("active"));
