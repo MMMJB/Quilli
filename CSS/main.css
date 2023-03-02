@@ -357,7 +357,7 @@ color-select {
     font-size: var(--fs-small);
     display: none;
     cursor: auto;
-    overflow: hidden scroll;
+    overflow: hidden auto;
     direction: ltr;
 }
 
@@ -367,6 +367,7 @@ color-select {
 
 .dropdown-item {
     position: relative;
+    cursor: pointer;
 }
 
 .dropdown-item[active]::after {

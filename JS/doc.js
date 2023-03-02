@@ -3,11 +3,25 @@ import "./app";
 import fonts from "./Util/fonts";
 import Squire from "squire-rte";
 
+const page = document.querySelector("page");
+
 const editor = new Squire(document.querySelector("page"), {
     blockAttributes: {
-        style: "font-size: 14px;"
+        style: "font-size: 14px;",
+        class: "squire-block"
     }
 }).focus();
+
+page.addEventListener("DOMNodeInserted", e => {
+    if (e.relatedNode !== page) return;
+
+    const pStyle = e.target.previousSibling.getAttribute("style");
+    e.target.setAttribute("style", pStyle);
+})
+
+const cssEditable = document.styleSheets[0];
+const editorStyle = cssEditable.cssRules[0] || cssEditable.rules[0];
+const editEditorStyle = (rule, value) => editorStyle.style.setProperty(rule, value, "important");
 
 editor.addEventListener("pathChange", _ => {
     const bold = editor.hasFormat("B"),
@@ -38,21 +52,18 @@ editor.addEventListener("pathChange", _ => {
         document.querySelector(".font .dropdown-item[active]").removeAttribute("active");
         document.querySelector(`.font .dropdown-item[value="${family}"]`).setAttribute("active", "");
     }
+
+    let block = window.getSelection().focusNode;
+    while (block.nodeType !== 1 || !block.classList.contains("squire-block")) 
+        block = block.parentNode;
+    
+    const align = block.style.getPropertyValue("text-align") || "left";
+    const talign = document.querySelector(".algn.active").getAttribute("value");
+    if (align !== talign) {
+        document.querySelector(".algn.active").classList.remove("active");
+        document.querySelector(`.algn[value="${align}"]`).classList.add("active");
+    }
 })
-
-
-const selectAll = _ => {
-    const range = new Range();
-    const page = document.querySelector("page");
-
-    const start = page.querySelector("div");
-    const end = page.querySelector("div:last-of-type");
-
-    range.setStartBefore(start);
-    range.setEndAfter(end);
-
-    editor.setSelection(range);
-}
 
 
 const bind = (elm, func1, func2) => {
@@ -61,12 +72,13 @@ const bind = (elm, func1, func2) => {
     elms.forEach(e => {
         e.addEventListener("click", _ => {
             if (!e.classList.contains("active")) {
+                elms.forEach(e => e.classList.remove("active"));
                 e.classList.add("active");
+
                 func1(e);
-            } else {
-                if (!func2) return;
-    
+            } else if (func2) {
                 e.classList.remove("active");
+                
                 func2(e);
             }
         })
@@ -77,11 +89,10 @@ bind(".bold", _ => editor.bold(), _ => editor.removeBold());
 bind(".italic", _ => editor.italic(), _ => editor.removeItalic());
 bind(".underline", _ => editor.underline(), _ => editor.removeUnderline());
 
-bind(".algn", _ => document.querySelectorAll(".algn").forEach(e => e.classList.remove("active")));
-bind(".algn.left", _ => editor.setTextAlignment("left"));
-bind(".algn.center", _ => editor.setTextAlignment("center"));
-bind(".algn.right", _ => editor.setTextAlignment("right"));
-bind(".algn.justify", _ => editor.setTextAlignment("justify"));
+bind(".algn", e => {
+    const val = e.getAttribute("value");
+    editor.setTextAlignment(val);
+});
 
 bind(".textColor .cs-col", e => editor.setTextColour(e.getAttribute("value")));
 bind(".highlight .cs-col", e => editor.setHighlightColour(e.getAttribute("value")));
@@ -108,7 +119,7 @@ window.onload = _ => {
     fonts.forEach(f => {
         const fVar = f.toLowerCase().replaceAll(" ", "-");
 
-        fontsList.innerHTML += `<li ${f == "Roboto" ? "active" : ""} value='${f}' class='dropdown-item' role='button' style='font-family:var(--${fVar})'>${f}</li>`;
+        fontsList.innerHTML += `<li ${f == "Roboto" ? "active" : ""} value='${f}' class='dropdown-item' style='font-family:var(--${fVar})'>${f}</li>`;
     })
 
     const fontsListItems = fontsList.querySelectorAll(".dropdown-item");
@@ -122,14 +133,3 @@ window.onload = _ => {
         }
     })
 }
-
-
-// const setLineHeight = newVal => {
-//     selectAll();
-
-//     editor.forEachBlock(e => {
-//         e.style.setProperty("margin-bottom", `${newVal || 0}px`);
-//     }, true);
-// }
-
-// document.querySelector(".lineHeight").onclick = _ => setLineHeight();
