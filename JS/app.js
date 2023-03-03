@@ -17,6 +17,8 @@ window.onresize = _ => {
     h = window.innerHeight;
 }
 
+setMainHeight();
+
 
 const SW = 7, SH = 4;
 
