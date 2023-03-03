@@ -1,13 +1,24 @@
 import colors from "./Util/colors";
 
+
+const main = document.getElementById("main"), header = document.getElementById("header");
+
+const setMainHeight = _ => {
+    const hh = header.getBoundingClientRect().height;
+    main.style.setProperty("max-height", `${window.innerHeight - hh - 3}px`);
+}
+
+let h = window.innerHeight;
+
+window.onresize = _ => {
+    if (window.innerHeight == h) return;
+    
+    setMainHeight();
+    h = window.innerHeight;
+}
+
+
 const SW = 7, SH = 4;
-const toolbar = document.getElementById("toolbar");
-
-const updateTBPos = _ => toolbar.style.setProperty("top", `${toolbar.getBoundingClientRect().top}px`);
-
-window.scrollTo({top: 0});
-updateTBPos();
-window.onresize = updateTBPos;
 
 document.querySelectorAll("[icon]").forEach(e => {
     const s = parseInt(e.getAttribute("icon-size"));  // Assuming square

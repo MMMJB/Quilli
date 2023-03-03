@@ -72,95 +72,101 @@
             </div>
         </div>
     </header>
-    <main id="main" flex>
-        <ul id="toolbar" role="toolbar">
-            <li class="toolbar-item text" style="z-index:4">
-                <div class="ti-cover" role="button"><i icon="23" icon-size="16"></i></div>
-                <div class="ti-popout-wrapper">
-                    <ul class="ti-popout" role="menubar">
-                        <li class="ti-popout-item bold" role="menuitem"><i icon="4" icon-size="12"></i></li>
-                        <li class="ti-popout-item italic" role="menuitem"><i icon="5" icon-size="12"></i></li>
-                        <li class="ti-popout-item underline" role="menuitem"><i icon="6" icon-size="14"></i></li>
-                        <li class="divider"></li>
-                        <li class="ti-popout-item size custom" role="menuitem">
-                            <i class="arrow up" icon="25" icon-size="7"></i>
-                            <input class="fontSize-input input-num" type="number" value="14">
-                            <i class="arrow down" icon="17" icon-size="7"></i>
-                        </li>
-                        <li class="divider"></li>
-                        <li class="ti-popout-item font custom" role="menuitem" style="margin-right: 12px">
-                            <div class="dropdown-head">
-                                <i icon="0" icon-size="12"></i>
-                            </div>
-                            <ul class="dropdown-body">
-                                
+    <div id="main">
+        <div>
+            <div id="toolbar-wrapper">
+                <ul id="toolbar" role="toolbar">
+                    <li class="toolbar-item text" style="z-index:4">
+                        <div class="ti-cover" role="button"><i icon="23" icon-size="16"></i></div>
+                        <div class="ti-popout-wrapper">
+                            <ul class="ti-popout" role="menubar">
+                                <li class="ti-popout-item bold" role="menuitem"><i icon="4" icon-size="12"></i></li>
+                                <li class="ti-popout-item italic" role="menuitem"><i icon="5" icon-size="12"></i></li>
+                                <li class="ti-popout-item underline" role="menuitem"><i icon="6" icon-size="14"></i></li>
+                                <li class="divider"></li>
+                                <li class="ti-popout-item size custom" role="menuitem">
+                                    <i class="arrow up" icon="25" icon-size="7"></i>
+                                    <input class="fontSize-input input-num" type="number" value="14">
+                                    <i class="arrow down" icon="17" icon-size="7"></i>
+                                </li>
+                                <li class="divider"></li>
+                                <li class="ti-popout-item font custom" role="menuitem" style="margin-right: 12px">
+                                    <div class="dropdown-head">
+                                        <i icon="0" icon-size="12"></i>
+                                    </div>
+                                    <ul class="dropdown-body">
+                                        
+                                    </ul>
+                                </li>
                             </ul>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <li class="toolbar-item aligment" style="z-index:3">
-                <div class="ti-cover" role="button"><i icon="7" icon-size="16"></i></div>
-                <div class="ti-popout-wrapper">
-                    <ul class="ti-popout" role="menubar">
-                        <li class="ti-popout-item algn left active" value="left" role="menuitem"><i icon="7" icon-size="14"></i></li>
-                        <li class="ti-popout-item algn center" value="center" role="menuitem"><i icon="8" icon-size="14"></i></li>
-                        <li class="ti-popout-item algn right" value="right" role="menuitem"><i icon="9" icon-size="14"></i></li>
-                        <li class="ti-popout-item algn justify" value="justify" role="menuitem"><i icon="10" icon-size="14"></i></li>
-                        <li class="divider"></li>
-                        <li class="ti-popout-item lineHeight custom" role="menuitem">
-                            <div class="dropdown-head">
-                                <i icon="11" icon-size="14"></i>
-                            </div>
-                            <ul class="dropdown-body">
-                                <li class="dropdown-item">Single</li>
-                                <li class="dropdown-item">1.5</li>
-                                <li class="dropdown-item">Double</li>
-                                <li class="dropdown-item">Custom</li>
+                        </div>
+                    </li>
+                    <li class="toolbar-item aligment" style="z-index:3">
+                        <div class="ti-cover" role="button"><i icon="7" icon-size="16"></i></div>
+                        <div class="ti-popout-wrapper">
+                            <ul class="ti-popout" role="menubar">
+                                <li class="ti-popout-item algn left active" value="left" role="menuitem"><i icon="7" icon-size="14"></i></li>
+                                <li class="ti-popout-item algn center" value="center" role="menuitem"><i icon="8" icon-size="14"></i></li>
+                                <li class="ti-popout-item algn right" value="right" role="menuitem"><i icon="9" icon-size="14"></i></li>
+                                <li class="ti-popout-item algn justify" value="justify" role="menuitem"><i icon="10" icon-size="14"></i></li>
+                                <li class="divider"></li>
+                                <li class="ti-popout-item lineHeight custom" role="menuitem">
+                                    <div class="dropdown-head">
+                                        <i icon="11" icon-size="14"></i>
+                                    </div>
+                                    <ul class="dropdown-body">
+                                        <li class="dropdown-item">Single</li>
+                                        <li class="dropdown-item">1.5</li>
+                                        <li class="dropdown-item">Double</li>
+                                        <li class="dropdown-item">Custom</li>
+                                    </ul>
+                                </li>
                             </ul>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <li class="toolbar-item design" style="z-index:2">
-                <div class="ti-cover" role="button"><i icon="24" icon-size="16"></i></div>
-                <div class="ti-popout-wrapper">
-                    <ul class="ti-popout" role="menubar">
-                        <li class="ti-popout-item textColor input-color" role="menuitem">
-                            <i icon="1" icon-size="14"></i>
-                            <color-select></color-select>
-                        </li>
-                        <li class="ti-popout-item highlight input-color" role="menuitem">
-                            <i icon="2" icon-size="14"></i>
-                            <color-select></color-select>
-                        </li>
-                        <li class="divider"></li>
-                        <li class="ti-popout-item page" role="menuitem"><i icon="15" icon-size="14"></i></li>
-                        <li class="ti-popout-item background" role="menuitem"><i icon="16" icon-size="14"></i></li>
-                        <li class="divider"></li>
-                        <li class="ti-popout-item image" role="menuitem"><i icon="18" icon-size="14"></i></li>
-                    </ul>
-                </div>
-            </li>
-            <li class="toolbar-item tools" style="z-index:1">
-                <div class="ti-cover" role="button"><i icon="22" icon-size="16"></i></div>
-                <div class="ti-popout-wrapper">
-                    <ul class="ti-popout" role="menubar">
-                        <li class="ti-popout-item dictionary" role="menuitem"><i icon="13" icon-size="14"></i></li>
-                        <li class="ti-popout-item count" role="menuitem"><i icon="14" icon-size="15"></i></li>
-                        <li class="ti-popout-item syllables" role="menuitem"><i icon="19" icon-size="14"></i></li>
-                        <li class="divider"></li>
-                        <li class="ti-popout-item rhymeScheme" role="menuitem"><i icon="~" icon-size="14"></i></li>
-                        <li class="ti-popout-item rhyme" role="menuitem"><i icon="12" icon-size="14"></i></li>
-                    </ul>
-                </div>
-            </li>
-            <li></li>
-        </ul>
-        <page></page>
-        <div id="quilli-checker" role="button">
-            <span id="alert">1</span>
+                        </div>
+                    </li>
+                    <li class="toolbar-item design" style="z-index:2">
+                        <div class="ti-cover" role="button"><i icon="24" icon-size="16"></i></div>
+                        <div class="ti-popout-wrapper">
+                            <ul class="ti-popout" role="menubar">
+                                <li class="ti-popout-item textColor input-color" role="menuitem">
+                                    <i icon="1" icon-size="14"></i>
+                                    <color-select></color-select>
+                                </li>
+                                <li class="ti-popout-item highlight input-color" role="menuitem">
+                                    <i icon="2" icon-size="14"></i>
+                                    <color-select></color-select>
+                                </li>
+                                <li class="divider"></li>
+                                <li class="ti-popout-item page" role="menuitem"><i icon="15" icon-size="14"></i></li>
+                                <li class="ti-popout-item background" role="menuitem"><i icon="16" icon-size="14"></i></li>
+                                <li class="divider"></li>
+                                <li class="ti-popout-item image" role="menuitem"><i icon="18" icon-size="14"></i></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="toolbar-item tools" style="z-index:1">
+                        <div class="ti-cover" role="button"><i icon="22" icon-size="16"></i></div>
+                        <div class="ti-popout-wrapper">
+                            <ul class="ti-popout" role="menubar">
+                                <li class="ti-popout-item dictionary" role="menuitem"><i icon="13" icon-size="14"></i></li>
+                                <li class="ti-popout-item count" role="menuitem"><i icon="14" icon-size="15"></i></li>
+                                <li class="ti-popout-item syllables" role="menuitem"><i icon="19" icon-size="14"></i></li>
+                                <li class="divider"></li>
+                                <li class="ti-popout-item rhymeScheme" role="menuitem"><i icon="~" icon-size="14"></i></li>
+                                <li class="ti-popout-item rhyme" role="menuitem"><i icon="12" icon-size="14"></i></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li></li>
+                </ul>
+            </div>
+            <div id="page-wrapper">
+                <page></page>
+            </div>
+            <div id="quilli-checker" role="button">
+                <span id="alert">1</span>
+            </div>
         </div>
-    </main>
+    </div>
 </body>
 </html>

@@ -3,6 +3,7 @@
 
 body {
     min-height: 100vh;
+    min-width: 500px;
     font-family: var(--roboto);
     /* background: url("/img/background.png") repeat center; */
     /* background-attachment: fixed; */
@@ -14,7 +15,7 @@ body {
 /* Loader */
 
 body:has(loader[active]) {
-    overflow: auto;
+    overflow: hidden;
 }
 
 loader {
@@ -137,8 +138,19 @@ loader:not([active]) {
 /* Main */
 
 #main {
-    justify-content: center;
+    width: 100%;
+    overflow-y: auto;
     padding: var(--default-gap) 0;
+    white-space: nowrap;
+}
+
+#main > div {
+    width: max-content;
+    margin: 0 auto;
+}
+
+#toolbar-wrapper, #page-wrapper {
+    display: inline-block;
 }
 
 #quilli-checker {
@@ -180,9 +192,14 @@ loader:not([active]) {
 
 /* Toolbar */
 
-#toolbar {
+#toolbar-wrapper {
+    min-width: 300px;
+    height: 100%;
     position: sticky;
-    align-self: flex-start;
+    top: 0;
+}
+
+#toolbar {
     margin-right: 36px;
 }
 
@@ -406,10 +423,6 @@ color-select {
     direction: ltr;
 }
 
-.dropdown-body::-webkit-scrollbar-track {
-    background-color: transparent;
-}
-
 .dropdown-item {
     position: relative;
     cursor: pointer;
@@ -442,7 +455,12 @@ color-select {
 
 /* Page */
 
+#page-wrapper {
+    vertical-align: top;
+}
+
 page {
+    display: block;
     min-width: 816px;
     max-width: 816px;
     min-height: 1056px;
