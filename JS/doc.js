@@ -140,14 +140,13 @@ document.querySelector(".fontSize-input").onkeyup = e => {
 }
 
 document.querySelectorAll(".lineHeight.custom .dropdown-item").forEach(e => {
-    switch (e.innerText) {
-        case "Single":
-            editEditorStyle("margin-bottom", "0px");
-            break;
-        case "Double":
-            break;
-        case "1.5":
-            break;
+    e.onclick = _ => {
+        const mult = parseFloat(e.getAttribute("value"));
+
+        editEditorStyle("margin-bottom", `${getFontSize() * mult}px`);
+
+        document.querySelector(".lineHeight.custom .dropdown-item[active]").removeAttribute("active");
+        e.setAttribute("active", "");
     }
 })
 
