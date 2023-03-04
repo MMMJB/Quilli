@@ -1,4 +1,4 @@
-import colors from "./Util/colors";
+import colors from "./Config/colors";
 
 
 const main = document.getElementById("main"), header = document.getElementById("header");
@@ -53,7 +53,7 @@ document.querySelectorAll("color-select").forEach(e => {
 
         if (i == colors.length - 1) {
             container.innerHTML += `
-                <li class="cs-col" value="none"></li>
+                <li class="cs-col" role="button"></li>
                 <li class="cs-col" value="new"><input type="color"></li>
             `;
         }

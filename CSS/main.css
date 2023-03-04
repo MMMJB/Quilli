@@ -257,7 +257,7 @@ loader:not([active]) {
     transition: all 350ms ease;
 }
 
-.ti-cover:not(.active):not(:hover) + .ti-popout-wrapper > .ti-popout:not(:hover) {
+.ti-cover:not(.active):not(:hover) + .ti-popout-wrapper > .ti-popout:not(:hover):not(:has(*:focus-visible)) {
     translate: 100%;
     pointer-events: none;
 }
@@ -484,4 +484,8 @@ page:focus-visible {
 
 page *::spelling-error {
     text-decoration: dotted black;
+}
+
+.ql-editor {
+    line-height: 1;
 }

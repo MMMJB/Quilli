@@ -1,5 +1,6 @@
 export default [
     "Amatic SC",
+    "Arial",
     "Caveat",
     "Comfortaa",
     "Courier Prime",
@@ -7,6 +8,7 @@ export default [
     "EB Garamond",
     "Gilda Display",
     "Happy Monkey",
+    "Helvetica",
     "Inter",
     "Lobster",
     "Merriweather",
