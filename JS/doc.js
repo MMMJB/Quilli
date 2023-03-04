@@ -121,8 +121,9 @@ bind(".algn", e => {
 });
 
 bind(".textColor .cs-col", e => editor.setTextColour(e.getAttribute("value")));
+document.querySelector(".textColor .cs-col > input[type='color']").oninput = e => editor.setTextColour(e.target.value);
 bind(".highlight .cs-col", e => editor.setHighlightColour(e.getAttribute("value")));
-
+document.querySelector(".highlight .cs-col > input[type='color']").oninput = e => editor.setHighlightColour(e.target.value);
 
 const setFontSize = newVal => {
     editor.setFontSize(`${newVal}px`);
@@ -137,6 +138,18 @@ document.querySelector(".fontSize-input").onblur = e => setFontSize(e.target.val
 document.querySelector(".fontSize-input").onkeyup = e => {
     if (e.key == "Enter" || e.keyCode == 13) setFontSize(e.target.value);
 }
+
+document.querySelectorAll(".lineHeight.custom .dropdown-item").forEach(e => {
+    switch (e.innerText) {
+        case "Single":
+            editEditorStyle("margin-bottom", "0px");
+            break;
+        case "Double":
+            break;
+        case "1.5":
+            break;
+    }
+})
 
 
 window.addEventListener("load", _ => {

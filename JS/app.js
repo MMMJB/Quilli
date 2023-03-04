@@ -51,7 +51,12 @@ document.querySelectorAll("color-select").forEach(e => {
             container.innerHTML += `<li class='cs-col' value="${c}" role="button" style="background-color:${c}"></li>`;
         })
 
-        if (i == colors.length - 1) container.innerHTML += `<li class="cs-col" value="new"><input type="color"></li>`
+        if (i == colors.length - 1) {
+            container.innerHTML += `
+                <li class="cs-col" value="none"></li>
+                <li class="cs-col" value="new"><input type="color"></li>
+            `;
+        }
     })
 })
 
